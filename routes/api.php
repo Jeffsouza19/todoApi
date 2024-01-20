@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/ping', function(){
     return response()->json('pong');
+});
+
+Route::get('/users', function(){
+    $users = User::all();
+    $tasks = Task::all();
+
+    return response()->json([$users, $tasks]);
 });
