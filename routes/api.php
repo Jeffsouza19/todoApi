@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,3 +27,6 @@ Route::get('/users', function(){
 
     return response()->json([$users, $tasks]);
 });
+
+Route::get('/task', [TaskController::class, 'index']);
+Route::post('/task/store', [TaskController::class, 'store']);
